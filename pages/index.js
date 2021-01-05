@@ -2,8 +2,8 @@ import Link from 'next/Link';
 import Layout from '../components/Layout';
 export default function Home({ pokemon }) {
     return (
-        <Layout title="NextJS Pokedex">
-            <h1 className="text-4xl mb-8 text-center ">The Nextjs Pokedex</h1>
+        <Layout title="Nextのポケモン図鑑">
+            <h1 className="text-4xl mb-8 text-center ">ポケモン図鑑</h1>
             <ul>
                 {pokemon.map((pokeman, index) => (
                     <li key={index}>
@@ -27,15 +27,19 @@ export default function Home({ pokemon }) {
     );
 }
 
-export async function getStaticProps(context) {
+//-----------------------------------
+//-------------API取得----------------
+//-----------------------------------
+export async function getStaticProps() {
     try {
-        const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=150');
+        const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=898');        
         const { results } = await res.json();
         const pokemon = results.map((pokeman, index) => {
-            const paddedId = ('00' + (index + 1)).slice(-3);
-
+            const paddedId = ('00' + (index + 1)).slice(-3);//連番番号
+            console.log(paddedId);
             const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${paddedId}.png`;
             return { ...pokeman, image };
+            
         });
         return {
             props: { pokemon },

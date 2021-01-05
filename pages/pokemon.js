@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import Link from 'next/Link';
 export default function pokemon({ pokeman }) {
+    console.log(pokeman);
     return (
         <Layout title={pokeman.name}>
             <h1 className="text-4xl mb-2 text-center capitalize">
