@@ -1,7 +1,5 @@
 import Head from 'next/head';
 export default function Home({ children, title }) {
-
-    console.log(children)
     return (
         <div className="bg-gray-300">
             <Head>

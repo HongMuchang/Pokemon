@@ -36,7 +36,6 @@ export async function getStaticProps() {
         const { results } = await res.json();
         const pokemon = results.map((pokeman, index) => {
             const paddedId = ('00' + (index + 1)).slice(-3);//連番番号
-            console.log(paddedId);
             const image = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${paddedId}.png`;
             return { ...pokeman, image };
             
